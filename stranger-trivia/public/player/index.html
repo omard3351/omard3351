@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Trivia Stranger Things - Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Pantalla de Registro -->
+  <div id="register-screen" class="screen active">
+    <div class="header">
+      <h1 class="title-small glitch" data-text="STRANGER THINGS">STRANGER THINGS</h1>
+      <p class="subtitle-small">TRIVIA</p>
+    </div>
+
+    <div class="register-content">
+      <div class="form-group">
+        <label for="player-name">Tu Nombre:</label>
+        <input type="text" id="player-name" placeholder="Ingresa tu nombre" maxlength="20" autocomplete="off">
+      </div>
+
+      <div class="form-group" id="team-selection" style="display: none;">
+        <label for="player-team">Elige tu Equipo:</label>
+        <select id="player-team">
+          <option value="">Sin equipo</option>
+          <option value="Los Demogorgons">🧟 Los Demogorgons</option>
+          <option value="Eleven's Squad">⚡ Eleven's Squad</option>
+          <option value="Hawkins Heroes">🎮 Hawkins Heroes</option>
+          <option value="The Mind Flayers">👾 The Mind Flayers</option>
+        </select>
+      </div>
+
+      <button id="join-btn" class="btn-primary" disabled>
+        Unirse al Juego
+      </button>
+
+      <div class="connection-status">
+        <div class="status-indicator" id="status-indicator"></div>
+        <span id="status-text">Conectando...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pantalla de Espera -->
+  <div id="waiting-screen" class="screen">
+    <div class="header">
+      <h1 class="title-small">¡Bienvenido!</h1>
+      <p class="player-info" id="player-info-name">-</p>
+    </div>
+
+    <div class="waiting-content">
+      <div class="spinner"></div>
+      <p class="waiting-text">Esperando a que inicie el juego...</p>
+      <p class="player-count-info" id="waiting-player-count">0 jugadores conectados</p>
+    </div>
+  </div>
+
+  <!-- Pantalla de Cuenta Regresiva -->
+  <div id="countdown-screen" class="screen">
+    <div class="countdown-content">
+      <h2>¡El juego está por comenzar!</h2>
+      <div class="countdown-number" id="countdown-number">3</div>
+      <p>Prepárate...</p>
+    </div>
+  </div>
+
+  <!-- Pantalla de Pregunta -->
+  <div id="question-screen" class="screen">
+    <div class="question-header-mobile">
+      <span class="timer-mobile" id="timer-mobile">30</span>
+      <span class="question-info" id="question-info">Pregunta 1/15</span>
+    </div>
+
+    <div class="options-container" id="options-container">
+      <button class="option-btn-mobile option-a" data-id="A">
+        <span class="option-letter-mobile">A</span>
+      </button>
+      <button class="option-btn-mobile option-b" data-id="B">
+        <span class="option-letter-mobile">B</span>
+      </button>
+      <button class="option-btn-mobile option-c" data-id="C">
+        <span class="option-letter-mobile">C</span>
+      </button>
+      <button class="option-btn-mobile option-d" data-id="D">
+        <span class="option-letter-mobile">D</span>
+      </button>
+    </div>
+
+    <div class="answer-feedback" id="answer-feedback" style="display: none;">
+      <p class="feedback-text">✓ Respuesta enviada</p>
+      <p class="waiting-others">Esperando otros jugadores...</p>
+    </div>
+  </div>
+
+  <!-- Pantalla de Resultado Personal -->
+  <div id="result-screen" class="screen">
+    <div class="result-content">
+      <div class="result-icon" id="result-icon">
+        <!-- Se llenará dinámicamente -->
+      </div>
+
+      <h2 class="result-title" id="result-title">¡Correcto!</h2>
+
+      <div class="result-stats">
+        <div class="stat-item">
+          <span class="stat-label">Puntos ganados:</span>
+          <span class="stat-value points" id="points-earned">+1000</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Total:</span>
+          <span class="stat-value total" id="total-score">1000</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Tu posición:</span>
+          <span class="stat-value position" id="player-position">1°</span>
+        </div>
+      </div>
+
+      <p class="next-info">Esperando siguiente pregunta...</p>
+    </div>
+  </div>
+
+  <!-- Pantalla Final -->
+  <div id="final-screen" class="screen">
+    <div class="final-content">
+      <h1 class="title-small">¡Juego Terminado!</h1>
+
+      <div class="final-stats">
+        <div class="final-position" id="final-position">1°</div>
+        <div class="final-score-label">Puntuación Final:</div>
+        <div class="final-score" id="final-score">0</div>
+      </div>
+
+      <div class="final-message" id="final-message">
+        ¡Excelente trabajo!
+      </div>
+
+      <p class="thank-you">¡Gracias por jugar!</p>
+      <p class="birthday-message">🎂 ¡Feliz Cumpleaños Romina! 🎂</p>
+    </div>
+  </div>
+
+  <!-- Pantalla de Reconexión -->
+  <div id="reconnect-screen" class="screen">
+    <div class="reconnect-content">
+      <div class="spinner"></div>
+      <h2>Reconectando...</h2>
+      <p>Se perdió la conexión. Intentando reconectar...</p>
+      <button id="retry-btn" class="btn-secondary" style="display: none;">
+        Reintentar
+      </button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

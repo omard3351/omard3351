@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Stranger Things - Host</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Pantalla de Lobby -->
+  <div id="lobby-screen" class="screen active">
+    <div class="glitch-container">
+      <h1 class="title glitch" data-text="STRANGER THINGS TRIVIA">STRANGER THINGS TRIVIA</h1>
+      <p class="subtitle">¡Feliz Cumpleaños Romina! 🎂</p>
+    </div>
+
+    <div class="lobby-content">
+      <div class="qr-section">
+        <h2>Escanea para unirte:</h2>
+        <div id="qr-code" class="qr-code"></div>
+        <p class="connection-url" id="connection-url">Cargando...</p>
+      </div>
+
+      <div class="players-section">
+        <h2>Jugadores Conectados: <span id="player-count">0</span></h2>
+        <div id="players-list" class="players-list">
+          <p class="no-players">Esperando jugadores...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lobby-controls">
+      <div class="mode-selector">
+        <label>Modo de Juego:</label>
+        <button id="mode-individual" class="mode-btn active">Individual</button>
+        <button id="mode-teams" class="mode-btn">Equipos</button>
+      </div>
+      <button id="start-game-btn" class="btn-primary" disabled>
+        Iniciar Juego
+      </button>
+    </div>
+  </div>
+
+  <!-- Pantalla de Inicio del Juego -->
+  <div id="starting-screen" class="screen">
+    <div class="glitch-container">
+      <h1 class="title glitch" data-text="¡PREPARADOS!">¡PREPARADOS!</h1>
+      <p class="countdown" id="countdown">3</p>
+    </div>
+  </div>
+
+  <!-- Pantalla de Pregunta -->
+  <div id="question-screen" class="screen">
+    <div class="question-header">
+      <span class="question-number" id="question-number">Pregunta 1 de 15</span>
+      <div class="timer-container">
+        <div class="timer-bar" id="timer-bar"></div>
+        <span class="timer-text" id="timer-text">30</span>
+      </div>
+    </div>
+
+    <div class="question-content">
+      <h2 class="question-text" id="question-text">Pregunta cargando...</h2>
+      <div class="options-grid" id="options-grid">
+        <button class="option-btn option-a" data-id="A">
+          <span class="option-letter">A</span>
+          <span class="option-text" id="option-a-text">Opción A</span>
+        </button>
+        <button class="option-btn option-b" data-id="B">
+          <span class="option-letter">B</span>
+          <span class="option-text" id="option-b-text">Opción B</span>
+        </button>
+        <button class="option-btn option-c" data-id="C">
+          <span class="option-letter">C</span>
+          <span class="option-text" id="option-c-text">Opción C</span>
+        </button>
+        <button class="option-btn option-d" data-id="D">
+          <span class="option-letter">D</span>
+          <span class="option-text" id="option-d-text">Opción D</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="answer-status">
+      <p id="answer-status-text">Esperando respuestas: <span id="answered-count">0/0</span></p>
+    </div>
+  </div>
+
+  <!-- Pantalla de Resultados por Pregunta -->
+  <div id="results-screen" class="screen">
+    <div class="results-header">
+      <h2>¡Respuesta Correcta!</h2>
+      <div class="correct-answer" id="correct-answer-display">
+        <span class="correct-letter" id="correct-letter">A</span>
+        <span class="correct-text" id="correct-text">Respuesta correcta</span>
+      </div>
+    </div>
+
+    <div class="statistics">
+      <h3>¿Qué respondieron?</h3>
+      <div class="stats-bars" id="stats-bars">
+        <div class="stat-bar">
+          <span class="stat-label">A:</span>
+          <div class="stat-bar-container">
+            <div class="stat-bar-fill option-a" id="stat-a" style="width: 0%"></div>
+          </div>
+          <span class="stat-count" id="stat-a-count">0</span>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-label">B:</span>
+          <div class="stat-bar-container">
+            <div class="stat-bar-fill option-b" id="stat-b" style="width: 0%"></div>
+          </div>
+          <span class="stat-count" id="stat-b-count">0</span>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-label">C:</span>
+          <div class="stat-bar-container">
+            <div class="stat-bar-fill option-c" id="stat-c" style="width: 0%"></div>
+          </div>
+          <span class="stat-count" id="stat-c-count">0</span>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-label">D:</span>
+          <div class="stat-bar-container">
+            <div class="stat-bar-fill option-d" id="stat-d" style="width: 0%"></div>
+          </div>
+          <span class="stat-count" id="stat-d-count">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scoreboard-mini">
+      <h3>Scoreboard</h3>
+      <div id="scoreboard-list" class="scoreboard-list">
+        <!-- Se llenará dinámicamente -->
+      </div>
+    </div>
+
+    <button id="next-question-btn" class="btn-primary">
+      Siguiente Pregunta
+    </button>
+  </div>
+
+  <!-- Pantalla Final -->
+  <div id="final-screen" class="screen">
+    <div class="glitch-container">
+      <h1 class="title glitch" data-text="¡JUEGO TERMINADO!">¡JUEGO TERMINADO!</h1>
+    </div>
+
+    <div class="podium">
+      <div class="podium-place second">
+        <div class="podium-rank">2°</div>
+        <div class="podium-name" id="second-place-name">-</div>
+        <div class="podium-score" id="second-place-score">0</div>
+      </div>
+      <div class="podium-place first">
+        <div class="podium-rank">🏆 1° 🏆</div>
+        <div class="podium-name" id="first-place-name">-</div>
+        <div class="podium-score" id="first-place-score">0</div>
+      </div>
+      <div class="podium-place third">
+        <div class="podium-rank">3°</div>
+        <div class="podium-name" id="third-place-name">-</div>
+        <div class="podium-score" id="third-place-score">0</div>
+      </div>
+    </div>
+
+    <div class="final-scoreboard">
+      <h3>Ranking Completo</h3>
+      <div id="final-scoreboard-list" class="scoreboard-list">
+        <!-- Se llenará dinámicamente -->
+      </div>
+    </div>
+
+    <div class="final-controls">
+      <button id="play-again-btn" class="btn-primary">Jugar de Nuevo</button>
+      <button id="back-lobby-btn" class="btn-secondary">Volver al Lobby</button>
+    </div>
+  </div>
+
+  <!-- Partículas de fondo (opcional) -->
+  <div class="particles" id="particles"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
