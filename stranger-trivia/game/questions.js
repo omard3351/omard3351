@@ -261,6 +261,201 @@ const allQuestions = [
     correctAnswer: "B",
     difficulty: "medium",
     category: "lugares"
+  },
+  {
+    id: 21,
+    question: "¿Cómo se llama la hermana de Eleven?",
+    options: [
+      { id: "A", text: "Diez" },
+      { id: "B", text: "Ocho" },
+      { id: "C", text: "Nueve" },
+      { id: "D", text: "Siete" }
+    ],
+    correctAnswer: "B",
+    difficulty: "medium",
+    category: "personajes"
+  },
+  {
+    id: 22,
+    question: "¿Qué le gusta comer a Dustin que encuentra en la basura?",
+    options: [
+      { id: "A", text: "Chocolate" },
+      { id: "B", text: "Nuggets" },
+      { id: "C", text: "3 Musketeers (barra de chocolate)" },
+      { id: "D", text: "Hot dogs" }
+    ],
+    correctAnswer: "C",
+    difficulty: "medium",
+    category: "objetos"
+  },
+  {
+    id: 23,
+    question: "¿Cómo se llama la mamá de Will y Jonathan?",
+    options: [
+      { id: "A", text: "Karen" },
+      { id: "B", text: "Joyce" },
+      { id: "C", text: "Claudia" },
+      { id: "D", text: "Susan" }
+    ],
+    correctAnswer: "B",
+    difficulty: "easy",
+    category: "personajes"
+  },
+  {
+    id: 24,
+    question: "¿Qué color de pelo tiene Max?",
+    options: [
+      { id: "A", text: "Rubio" },
+      { id: "B", text: "Negro" },
+      { id: "C", text: "Rojo/Pelirrojo" },
+      { id: "D", text: "Castaño" }
+    ],
+    correctAnswer: "C",
+    difficulty: "easy",
+    category: "personajes"
+  },
+  {
+    id: 25,
+    question: "¿Qué le gusta mucho a Hopper?",
+    options: [
+      { id: "A", text: "Café y donas" },
+      { id: "B", text: "Pizza" },
+      { id: "C", text: "Ensaladas" },
+      { id: "D", text: "Frutas" }
+    ],
+    correctAnswer: "A",
+    difficulty: "easy",
+    category: "personajes"
+  },
+  {
+    id: 26,
+    question: "¿Cómo le llaman los chicos a Eleven de cariño?",
+    options: [
+      { id: "A", text: "Ellie" },
+      { id: "B", text: "El" },
+      { id: "C", text: "Eve" },
+      { id: "D", text: "Once" }
+    ],
+    correctAnswer: "B",
+    difficulty: "easy",
+    category: "personajes"
+  },
+  {
+    id: 27,
+    question: "¿Qué animal adopta Dustin como mascota?",
+    options: [
+      { id: "A", text: "Un gato" },
+      { id: "B", text: "Un perro" },
+      { id: "C", text: "Dart (una criatura del Upside Down)" },
+      { id: "D", text: "Un hámster" }
+    ],
+    correctAnswer: "C",
+    difficulty: "medium",
+    category: "criaturas"
+  },
+  {
+    id: 28,
+    question: "¿Qué es lo primero que Eleven aprende a decir?",
+    options: [
+      { id: "A", text: "Hola" },
+      { id: "B", text: "No" },
+      { id: "C", text: "Mike" },
+      { id: "D", text: "Waffles" }
+    ],
+    correctAnswer: "B",
+    difficulty: "medium",
+    category: "personajes"
+  },
+  {
+    id: 29,
+    question: "¿Cómo se llama el hermano de Max?",
+    options: [
+      { id: "A", text: "Steve" },
+      { id: "B", text: "Billy" },
+      { id: "C", text: "Troy" },
+      { id: "D", text: "Jason" }
+    ],
+    correctAnswer: "B",
+    difficulty: "medium",
+    category: "personajes"
+  },
+  {
+    id: 30,
+    question: "¿Qué arma usa Hopper para defenderse?",
+    options: [
+      { id: "A", text: "Una espada" },
+      { id: "B", text: "Un bate de béisbol" },
+      { id: "C", text: "Una pistola y un rifle" },
+      { id: "D", text: "Una resortera" }
+    ],
+    correctAnswer: "C",
+    difficulty: "easy",
+    category: "objetos"
+  },
+  {
+    id: 31,
+    question: "¿Qué arma usa Steve para pelear?",
+    options: [
+      { id: "A", text: "Una espada" },
+      { id: "B", text: "Un bate de béisbol con clavos" },
+      { id: "C", text: "Una pistola" },
+      { id: "D", text: "Sus puños" }
+    ],
+    correctAnswer: "B",
+    difficulty: "easy",
+    category: "objetos"
+  },
+  {
+    id: 32,
+    question: "¿Cuál es el apodo de Will cuando está poseído?",
+    options: [
+      { id: "A", text: "Will el Sabio" },
+      { id: "B", text: "Zombie Boy" },
+      { id: "C", text: "El Elegido" },
+      { id: "D", text: "Will el Valiente" }
+    ],
+    correctAnswer: "A",
+    difficulty: "medium",
+    category: "personajes"
+  },
+  {
+    id: 33,
+    question: "¿Qué vehículo usa Hopper?",
+    options: [
+      { id: "A", text: "Una camioneta roja" },
+      { id: "B", text: "Una patrulla de policía" },
+      { id: "C", text: "Una motocicleta" },
+      { id: "D", text: "Un auto deportivo" }
+    ],
+    correctAnswer: "B",
+    difficulty: "easy",
+    category: "objetos"
+  },
+  {
+    id: 34,
+    question: "¿Qué actividad le gusta mucho a Mike y Will?",
+    options: [
+      { id: "A", text: "Fútbol" },
+      { id: "B", text: "Dibujar y jugar D&D" },
+      { id: "C", text: "Nadar" },
+      { id: "D", text: "Cantar" }
+    ],
+    correctAnswer: "B",
+    difficulty: "easy",
+    category: "personajes"
+  },
+  {
+    id: 35,
+    question: "¿Cómo se llama la amiga de Steve que trabaja con él en la heladería?",
+    options: [
+      { id: "A", text: "Nancy" },
+      { id: "B", text: "Robin" },
+      { id: "C", text: "Max" },
+      { id: "D", text: "Erica" }
+    ],
+    correctAnswer: "B",
+    difficulty: "medium",
+    category: "personajes"
   }
 ];
 
